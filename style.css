@@ -13,7 +13,6 @@ body {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-right: 1.5px solid rgba(255, 255, 255, 0.28);
-    padding-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,11 +22,17 @@ body {
     z-index: 100;
 }
 
+.sidebar h2 {
+    text-align: center;
+    letter-spacing: 1px;
+    color: #0d47a1;
+}
+
 .sidebar a {
     color: #052342;
     text-decoration: none;
-    margin: 16px 0;
-    padding: 12px 36px;
+    margin: 12px 0;
+    padding: 10px 35px;
     border-radius: 18px;
     font-size: 1.1rem;
     font-weight: 500;
@@ -51,7 +56,6 @@ body {
 
 h1 {
     color: #0d47a1;
-    margin-top: 0;
     text-shadow: 0 2px 8px rgba(255, 255, 255, 0.4);
 }
 
@@ -64,9 +68,8 @@ h1 {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1.5px solid rgba(255, 255, 255, 0.28);
-    padding: 32px 24px 24px 24px;
-    margin-bottom: 100px;
-    margin-top: 0;
+    padding: 5px 24px 5px 24px;
+    margin-bottom: 2em;
     transition: box-shadow 0.2s;
 }
 
@@ -76,8 +79,6 @@ h1 {
 
 .dashboard-section h2 {
     color: #1976d2;
-    margin-top: 0;
-    margin-bottom: 18px;
     text-shadow: 0 1px 6px rgba(255, 255, 255, 0.3);
     font-weight: 600;
 }
@@ -146,6 +147,11 @@ input[type="file"] {
     backdrop-filter: blur(6px);
     font-size: 1rem;
     cursor: pointer;
+}
+
+.plot-btn.active { 
+    background: #1976d2; 
+    color: #fff; 
 }
 
 @media (max-width: 900px) {
