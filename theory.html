@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Theoretical Analysis</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .theory-section {
+        width: 40%;
+        min-width: 700px;
+        background: rgba(255, 255, 255, 0.18);
+        border-radius: 24px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1.5px solid rgba(255, 255, 255, 0.28);
+        padding: 32px 24px 24px 24px;
+        margin-bottom: 100px;
+        margin-top: 0;
+        transition: box-shadow 0.2s;
+        text-align: justify;
+      }
+      .theory-section h2 {
+        color: #1976d2;
+        margin-top: 0;
+        margin-bottom: 18px;
+        text-shadow: 0 1px 6px rgba(255, 255, 255, 0.3);
+        font-weight: 600;
+      }
+      .theory-section ul {
+        margin-top: 18px;
+        margin-bottom: 18px;
+      }
+      .theory-section li {
+        margin-bottom: 10px;
+      }
+      .math-formula {
+        background: rgba(255, 255, 255, 0.22);
+        border-radius: 12px;
+        padding: 10px 18px;
+        margin: 12px 0;
+        font-family: "Consolas", "Menlo", "Monaco", monospace;
+        color: #0d47a1;
+        font-size: 1.08em;
+        box-shadow: 0 2px 8px rgba(31, 38, 135, 0.07);
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="sidebar">
+      <h2>Fraud Detection</h2>
+      <a href="index.html">Dashboard</a>
+      <a href="visualizations.html">Visualizations</a>
+      <a href="analysis.html">Analysis</a>
+      <a href="amount-trends.html">Amount Trends</a>
+      <a href="feature.html">Feature</a>
+      <a href="theory.html" class="active">Theory</a>
+    </nav>
+    <div class="main-content">
+      <h1>Theoretical Analysis</h1>
+      <div class="theory-section">
+        <h2>About Credit Card Fraud Detection</h2>
+        <ul>
+          <li>
+            <strong>Imbalanced Data Problem:</strong> In most real-world credit
+            card datasets, fraudulent transactions are extremely rare compared
+            to legitimate ones. This imbalance challenges standard machine
+            learning algorithms, which may be biased toward predicting the
+            majority class.
+          </li>
+          <li>
+            <strong>Feature Engineering:</strong> The anonymized features
+            (V1–V28) are typically the result of a PCA transformation to protect
+            sensitive information. Understanding the statistical properties and
+            relationships of these features is crucial for effective fraud
+            detection.
+          </li>
+          <li>
+            <strong>Evaluation Metrics:</strong> Traditional accuracy is not
+            sufficient for imbalanced datasets. Metrics such as precision,
+            recall, F1-score, and especially the Area Under the ROC Curve
+            (AUC-ROC) provide better insight into model performance.
+          </li>
+          <li>
+            <strong>Fraud Patterns:</strong> Fraudulent transactions may exhibit
+            unique patterns, such as occurring at unusual times, involving
+            atypical amounts, or showing distinct feature correlations.
+            Visualization and statistical analysis help uncover these patterns.
+          </li>
+          <li>
+            <strong>Modeling Approaches:</strong> Common approaches include
+            supervised learning (logistic regression, decision trees, random
+            forests, gradient boosting, neural networks) and unsupervised
+            methods (anomaly detection, clustering) for cases with limited
+            labeled data.
+          </li>
+          <li>
+            <strong>Data Privacy:</strong> Anonymization and secure handling of
+            sensitive financial data are essential for compliance and ethical
+            analysis.
+          </li>
+        </ul>
+      </div>
+      <div class="theory-section">
+        <h2>Mathematical Concepts</h2>
+        <ul>
+          <li>
+            <strong>Principal Component Analysis (PCA):</strong>
+            <br />
+            Used to anonymize and reduce dimensionality of transaction features.
+            The transformation is defined as:<br/>
+            <div class="math-formula">Z = XW</div><br/>
+            where <b>X</b> is the original data matrix, <b>W</b> is the matrix
+            of principal components, and <b>Z</b> is the transformed data.
+          </li>
+          <li>
+            <strong>Correlation Coefficient:</strong>
+            <br />
+            Measures linear relationship between two variables: <br/>
+            <div class="math-formula">
+              r = <span style="font-size: 1.1em">&#x2211;</span>[(x<sub>i</sub>
+              - &#x03BC;<sub>x</sub>)(y<sub>i</sub> - &#x03BC;<sub>y</sub>)] /
+              [n&#x2219;&#x03C3;<sub>x</sub>&#x2219;&#x03C3;<sub>y</sub>]
+            </div><br/>
+            where <b>&#x03BC;</b> is the mean and <b>&#x03C3;</b> is the
+            standard deviation.
+          </li>
+          <li>
+            <strong>Confusion Matrix & Metrics:</strong>
+            <br />
+            For binary classification (fraud/non-fraud), metrics are:
+            <ul>
+              <li>
+                <b>Precision:</b>
+                <span class="math-formula"> Precision = TP / (TP + FP) </span>
+              </li>
+              <li>
+                <b>Recall:</b>
+                <span class="math-formula"> Recall = TP / (TP + FN) </span>
+              </li>
+              <li>
+                <b>F1 Score:</b>
+                <span class="math-formula">
+                  F1 = 2 &#x2219; (Precision &#x2219; Recall) / (Precision +
+                  Recall)
+                </span>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>ROC Curve & AUC:</strong>
+            <br />
+            The ROC curve plots True Positive Rate (TPR) vs. False Positive Rate
+            (FPR):<br/>
+            <div class="math-formula">
+              TPR = TP / (TP + FN)
+              <br />
+              FPR = FP / (FP + TN)
+            </div><br/>
+            The Area Under the Curve (AUC) quantifies overall model performance.
+          </li>
+          <li>
+            <strong>Anomaly Detection:</strong>
+            <br />
+            Unsupervised methods often use statistical thresholds:
+            <div class="math-formula">z = (x - &#x03BC;) / &#x03C3;</div><br/>
+            Transactions with high |z| scores may be flagged as anomalies.
+          </li>
+        </ul>
+      </div>
+      <div class="theory-section">
+        <h2>Mathematical Workflow Example</h2>
+        <ol>
+          <li>
+            Normalize or standardize features:
+            <span class="math-formula">x' = (x - &#x03BC;) / &#x03C3;</span>
+          </li>
+          <li>Apply PCA to reduce dimensions while retaining variance.</li>
+          <li>
+            Train a classifier (e.g., logistic regression, random forest) using
+            labeled data.
+          </li>
+          <li>Evaluate with confusion matrix and ROC/AUC.</li>
+          <li>Interpret feature importances and model coefficients.</li>
+        </ol>
+      </div>
+      <div class="theory-section">
+        <h2>Best Practices for Analysis</h2>
+        <ul>
+          <li>
+            <strong>Resampling Techniques:</strong> Use oversampling (SMOTE) or
+            undersampling to balance the dataset for training.
+          </li>
+          <li>
+            <strong>Cross-Validation:</strong> Employ stratified
+            cross-validation to ensure robust evaluation across both classes.
+          </li>
+          <li>
+            <strong>Feature Importance:</strong> Use model-based or permutation
+            importance to identify which features most influence fraud
+            predictions.
+          </li>
+          <li>
+            <strong>Explainability:</strong> Apply explainable AI methods (e.g.,
+            SHAP, LIME) to interpret model decisions and build trust.
+          </li>
+        </ul>
+      </div>
+      <div class="theory-section">
+        <h2>References</h2>
+        <ul>
+          <li>
+            Credit Card Fraud Detection: A Realistic Modeling and a Novel
+            Learning Strategy (<em>IEEE Access</em>)
+          </li>
+          <li>
+            Credit Card Fraud Detection using Machine Learning: A Survey (<em
+              >International Journal of Computer Applications</em
+            >)
+          </li>
+          <li>
+            Fraud Detection in Credit Card Transactions using Machine Learning
+            Algorithms (<em>Elsevier Procedia Computer Science</em>)
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
