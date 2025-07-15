@@ -20,8 +20,8 @@ with open('ml model/dt_model.pkl', 'rb') as f:
 with open('ml model/gb_model.pkl', 'rb') as f:
     gb_model = pickle.load(f)
 
-# Load your dataset (replace '3.csv' with your actual filename if different)
-df = pd.read_csv('dataset/creditcard-1.csv')
+# Load your dataset
+df = pd.read_csv('dataset/test-2.csv')
 X = df.drop('Class', axis=1)
 y = df['Class']
 
