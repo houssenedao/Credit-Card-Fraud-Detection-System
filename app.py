@@ -1,0 +1,100 @@
+from flask import Flask, request, jsonify, render_template
+import numpy as np
+import pickle
+import pandas as pd
+from sklearn.metrics import accuracy_score
+
+app = Flask(__name__)
+
+# Load models
+with open('ml model/logreg_model.pkl', 'rb') as f:
+    logreg_model = pickle.load(f)
+with open('ml model/svm_model.pkl', 'rb') as f:
+    svm_model = pickle.load(f)
+with open('ml model/knn_model.pkl', 'rb') as f:
+    knn_model = pickle.load(f)
+with open('ml model/rf_model.pkl', 'rb') as f:
+    rf_model = pickle.load(f)
+with open('ml model/dt_model.pkl', 'rb') as f:
+    dt_model = pickle.load(f)
+with open('ml model/gb_model.pkl', 'rb') as f:
+    gb_model = pickle.load(f)
+
+# Load your dataset (replace '3.csv' with your actual filename if different)
+df = pd.read_csv('dataset/creditcard-1.csv')
+X = df.drop('Class', axis=1)
+y = df['Class']
+
+# Calculate accuracy for each model using the entire dataset
+model_accuracies = {
+    'logreg': accuracy_score(y, logreg_model.predict(X)),
+    'svm': accuracy_score(y, svm_model.predict(X)),
+    'knn': accuracy_score(y, knn_model.predict(X)),
+    'rf': accuracy_score(y, rf_model.predict(X)),
+    'dt': accuracy_score(y, dt_model.predict(X)),
+    'gb': accuracy_score(y, gb_model.predict(X)),
+}
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/index.html')
+def index():
+    return render_template('index.html')
+
+@app.route('/visualizations.html')
+def visualizations():
+    return render_template('visualizations.html')
+
+@app.route('/analysis.html')
+def analysis():
+    return render_template('analysis.html')
+
+@app.route('/amount-trends.html')
+def amount_trends():
+    return render_template('amount-trends.html')
+
+@app.route('/feature.html')
+def feature():
+    return render_template('feature.html')
+
+@app.route('/theory.html')
+def theory():
+    return render_template('theory.html')
+
+@app.route('/model.html')
+def model():
+    return render_template('model.html')
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.json
+    features = np.array(data['features']).reshape(1, -1)
+    model_name = data.get('model', 'logreg')  # default to logistic regression
+
+    if model_name == 'svm':
+        model = svm_model
+    elif model_name == 'knn':
+        model = knn_model
+    elif model_name == 'rf':
+        model = rf_model
+    elif model_name == 'dt':
+        model = dt_model
+    elif model_name == 'gb':
+        model = gb_model
+    else:
+        model = logreg_model
+
+    pred = model.predict(features)[0]
+    if hasattr(model, "predict_proba"):
+        prob = model.predict_proba(features)[0, 1]
+    else:
+        prob = float(model.decision_function(features)[0])
+    acc = model_accuracies.get(model_name, model_accuracies['logreg'])
+    return jsonify({'prediction': int(pred), 'probability': float(prob), 'accuracy': float(acc)})
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
