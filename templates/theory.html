@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>Theoretical Analysis</title>
-    <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  </head>
     <style>
       .theory-section {
         width: 40%;
@@ -53,6 +56,7 @@
       <a href="index.html">Dashboard</a>
       <a href="visualizations.html">Visualizations</a>
       <a href="analysis.html">Analysis</a>
+      <a href="model.html">ML Model</a>
       <a href="amount-trends.html">Amount Trends</a>
       <a href="feature.html">Feature</a>
       <a href="theory.html" class="active">Theory</a>
