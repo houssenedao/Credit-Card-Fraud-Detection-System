@@ -22,8 +22,10 @@
   </nav>
   <div class="main-content">
     <h1>📊 Credit Card Fraud Detection System</h1>
-    <img src="{{ url_for('static', filename='1.svg') }}" alt="Fraud Detection" width="200" height="200"> 
+    <div class="upload-row">
+    <img src="{{ url_for('static', filename='1.svg') }}" alt="Fraud Detection" class="upload-img"> 
     <input type="file" id="csvFile" accept=".csv" />
+    </div>
     <div class="dashboard-section" id="overview-section">
       <div class="overview-sections">
         <h2>Overview</h2>
