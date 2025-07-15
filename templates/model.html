@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Credit Card Fraud Prediction</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+    />
+    <style>
+      .glass-container {
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        padding: 1em;
+        width: 600px;
+        text-align: center;
+      }
+      h2 {
+        color: #1976d2;
+        letter-spacing: 1px;
+        margin-bottom: 1em;
+      }
+      label {
+        color: #1976d2;
+        font-weight: 500;
+      }
+      input[type="text"] {
+        width: 80%;
+        padding: 0.7em;
+        margin-top: 0.5em;
+        border-radius: 10px;
+        border: 1px solid #b2ebf2;
+        background: rgba(255, 255, 255, 0.6);
+        font-size: 1em;
+        outline: none;
+        transition: border 0.2s;
+      }
+      input[type="text"]:focus {
+        border: 1.5px solid #1976d2;
+        background: rgba(255, 255, 255, 0.8);
+      }
+      button[type="submit"] {
+        margin-top: 1.2em;
+        padding: 0.7em 2.5em;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(90deg, #81d4fa 0%, #1976d2 100%);
+        color: #fff;
+        font-size: 1.1em;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+        transition: background 0.2s, transform 0.2s;
+      }
+      button[type="submit"]:hover {
+        background: linear-gradient(90deg, #1976d2 0%, #81d4fa 100%);
+        transform: translateY(-1px) scale(1.03);
+      }
+      #result {
+        margin-top: 1.5em;
+        font-size: 1.15em;
+        color: #1976d2;
+        background: rgba(255, 255, 255, 0.35);
+        border-radius: 12px;
+        padding: 1em;
+        box-shadow: 0 2px 8px rgba(25, 118, 210, 0.06);
+        min-height: 4em;
+        max-width: 300px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @media (max-width: 900px) {
+        .glass-container {
+          width: 98%;
+          padding: 1.2em 0.5em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="sidebar">
+      <h2>Fraud Detection</h2>
+      <a href="index.html">Dashboard</a>
+      <a href="visualizations.html">Visualizations</a>
+      <a href="analysis.html">Analysis</a>
+      <a href="model.html" class="active">ML Model</a>
+      <a href="amount-trends.html">Amount Trends</a>
+      <a href="feature.html">Feature</a>
+      <a href="theory.html">Theory</a>
+    </nav>
+    <div class="main-content">
+      <div class="glass-container">
+        <h2>Fraud Prediction</h2>
+        <form id="predict-form">
+          <label
+            >Feature values (comma separated):<br />
+            <input
+              type="text"
+              id="features"
+              size="50"
+              placeholder="1,1.2,3.4,..."
+              required
+            />
+          </label>
+          <br /><br />
+          <label>
+            Select Model:<br />
+            <select
+              id="model-select"
+              style="
+                padding: 0.5em;
+                border-radius: 8px;
+                border: 1px solid #b2ebf2;
+                margin-top: 0.5em;
+              "
+            >
+              <option value="logreg">Logistic Regression</option>
+              <option value="svm">SVM</option>
+              <option value="knn">KNN</option>
+              <option value="rf">Random Forest</option>
+              <option value="dt">Decision Tree</option>
+              <option value="gb">Gradient Boosting</option>
+            </select>
+          </label>
+          <br /><br />
+          <button type="submit">Predict</button>
+        </form>
+        <div id="result"></div>
+      </div>
+    </div>
+    <script>
+      document.getElementById("predict-form").onsubmit = async function (e) {
+        e.preventDefault();
+        const features = document
+          .getElementById("features")
+          .value.split(",")
+          .map(Number);
+        const model = document.getElementById("model-select").value;
+        const res = await fetch("/predict", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ features, model }),
+        });
+        const data = await res.json();
+        document.getElementById("result").innerHTML = `<b>Prediction:</b> ${
+          data.prediction === 1 ? "Fraudulent" : "Legitimate"
+        }<br>
+                 <b>Probability:</b> ${data.probability.toFixed(8)}<br>
+         <b>Accuracy:</b> ${(data.accuracy * 100).toFixed(2)}%`;
+      };
+    </script>
+  </body>
+</html>
