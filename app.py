@@ -3,6 +3,9 @@ import numpy as np
 import pickle
 import pandas as pd
 from sklearn.metrics import accuracy_score
+import xgboost as xgb
+from sklearn.ensemble import AdaBoostClassifier  # Add this import
+from imblearn.ensemble import BalancedRandomForestClassifier, EasyEnsembleClassifier  # Add this import
 
 app = Flask(__name__)
 
@@ -19,6 +22,15 @@ with open('ml model/dt_model.pkl', 'rb') as f:
     dt_model = pickle.load(f)
 with open('ml model/gb_model.pkl', 'rb') as f:
     gb_model = pickle.load(f)
+with open('ml model/xgb_model.pkl', 'rb') as f:
+    xgb_model = pickle.load(f)
+with open('ml model/adaboost_model.pkl', 'rb') as f:  # Add this line
+    adaboost_model = pickle.load(f)
+# Load or train ensemble models (example: train and save first, then load as below)
+with open('ml model/brf_model.pkl', 'rb') as f:
+    brf_model = pickle.load(f)
+with open('ml model/easy_ensemble_model.pkl', 'rb') as f:
+    easy_ensemble_model = pickle.load(f)
 
 # Load your dataset
 df = pd.read_csv('dataset/test-2.csv')
@@ -33,6 +45,10 @@ model_accuracies = {
     'rf': accuracy_score(y, rf_model.predict(X)),
     'dt': accuracy_score(y, dt_model.predict(X)),
     'gb': accuracy_score(y, gb_model.predict(X)),
+    'xgb': accuracy_score(y, xgb_model.predict(X)),
+    'adaboost': accuracy_score(y, adaboost_model.predict(X)),  # Add this line
+    'brf': accuracy_score(y, brf_model.predict(X)),  # Balanced Random Forest
+    'easy_ensemble': accuracy_score(y, easy_ensemble_model.predict(X)),  # Easy Ensemble
 }
 
 @app.route('/')
@@ -83,6 +99,14 @@ def predict():
         model = dt_model
     elif model_name == 'gb':
         model = gb_model
+    elif model_name == 'xgb':
+        model = xgb_model
+    elif model_name == 'adaboost':
+        model = adaboost_model
+    elif model_name == 'brf':
+        model = brf_model
+    elif model_name == 'easy_ensemble':
+        model = easy_ensemble_model
     else:
         model = logreg_model
 
