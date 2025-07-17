@@ -23,8 +23,8 @@ with open('ml model/dt_model.pkl', 'rb') as f:
     dt_model = pickle.load(f)
 with open('ml model/gb_model.pkl', 'rb') as f:
     gb_model = pickle.load(f)
-with open('ml model/xgb_model.pkl', 'rb') as f:
-    xgb_model = pickle.load(f)
+xgb_model = xgb.XGBClassifier()
+xgb_model.load_model('ml model/xgb_model.json')
 with open('ml model/adaboost_model.pkl', 'rb') as f:  # Add this line
     adaboost_model = pickle.load(f)
 # Load or train ensemble models (example: train and save first, then load as below)
