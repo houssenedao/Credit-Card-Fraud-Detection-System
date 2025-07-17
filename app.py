@@ -6,6 +6,7 @@ from sklearn.metrics import accuracy_score
 import xgboost as xgb
 from sklearn.ensemble import AdaBoostClassifier  # Add this import
 from imblearn.ensemble import BalancedRandomForestClassifier, EasyEnsembleClassifier  # Add this import
+import os
 
 app = Flask(__name__)
 
@@ -119,6 +120,7 @@ def predict():
     return jsonify({'prediction': int(pred), 'probability': float(prob), 'accuracy': float(acc)})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
 
 
