@@ -134,7 +134,11 @@
               <option value="knn">KNN</option>
               <option value="rf">Random Forest</option>
               <option value="dt">Decision Tree</option>
+              <option value="adaboost">AdaBoost</option>
+              <option value="xgb">XGBoost</option>
               <option value="gb">Gradient Boosting</option>
+              <option value="brf">Balanced Random Forest</option>
+              <option value="easy_ensemble">Easy Ensemble</option>
             </select>
           </label>
           <br /><br />
@@ -160,7 +164,7 @@
         document.getElementById("result").innerHTML = `<b>Prediction:</b> ${
           data.prediction === 1 ? "Fraudulent" : "Legitimate"
         }<br>
-                 <b>Probability:</b> ${data.probability.toFixed(8)}<br>
+                 <b>Probability:</b> ${data.probability.toFixed(6)}<br>
          <b>Accuracy:</b> ${(data.accuracy * 100).toFixed(2)}%`;
       };
     </script>
