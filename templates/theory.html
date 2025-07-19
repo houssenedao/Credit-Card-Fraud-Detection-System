@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <title>Theoretical Analysis</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <link rel="icon" href="{{ url_for('static', filename='1.ico') }}">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link rel="icon" href="{{ url_for('static', filename='1.ico') }}" />
     <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   </head>
@@ -72,20 +75,22 @@
             <strong>Principal Component Analysis (PCA):</strong>
             <br />
             Used to anonymize and reduce dimensionality of transaction features.
-            The transformation is defined as:<br/>
-            <div class="math-formula">Z = XW</div><br/>
+            The transformation is defined as:<br />
+            <div class="math-formula">Z = XW</div>
+            <br />
             where <b>X</b> is the original data matrix, <b>W</b> is the matrix
             of principal components, and <b>Z</b> is the transformed data.
           </li>
           <li>
             <strong>Correlation Coefficient:</strong>
             <br />
-            Measures linear relationship between two variables: <br/>
+            Measures linear relationship between two variables: <br />
             <div class="math-formula">
               r = <span style="font-size: 1.1em">&#x2211;</span>[(x<sub>i</sub>
               - &#x03BC;<sub>x</sub>)(y<sub>i</sub> - &#x03BC;<sub>y</sub>)] /
               [n&#x2219;&#x03C3;<sub>x</sub>&#x2219;&#x03C3;<sub>y</sub>]
-            </div><br/>
+            </div>
+            <br />
             where <b>&#x03BC;</b> is the mean and <b>&#x03C3;</b> is the
             standard deviation.
           </li>
@@ -115,19 +120,21 @@
             <strong>ROC Curve & AUC:</strong>
             <br />
             The ROC curve plots True Positive Rate (TPR) vs. False Positive Rate
-            (FPR):<br/>
+            (FPR):<br />
             <div class="math-formula">
               TPR = TP / (TP + FN)
               <br />
               FPR = FP / (FP + TN)
-            </div><br/>
+            </div>
+            <br />
             The Area Under the Curve (AUC) quantifies overall model performance.
           </li>
           <li>
             <strong>Anomaly Detection:</strong>
             <br />
             Unsupervised methods often use statistical thresholds:
-            <div class="math-formula">z = (x - &#x03BC;) / &#x03C3;</div><br/>
+            <div class="math-formula">z = (x - &#x03BC;) / &#x03C3;</div>
+            <br />
             Transactions with high |z| scores may be flagged as anomalies.
           </li>
         </ul>
