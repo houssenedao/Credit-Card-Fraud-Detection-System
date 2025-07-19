@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>Credit Card Fraud Detection Dashboard</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <link rel="icon" href="{{ url_for('static', filename='1.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='images/1.ico') }}">
   <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
@@ -24,7 +24,7 @@
   <div class="main-content">
     <h1>📊 Credit Card Fraud Detection System</h1>
     <div class="upload-row">
-    <img src="{{ url_for('static', filename='1.svg') }}" alt="Fraud Detection" class="upload-img"> 
+    <img src="{{ url_for('static', filename='images/1.svg') }}" alt="Fraud Detection" class="upload-img"> 
     <input type="file" id="csvFile" accept=".csv" />
     </div>
     <div class="dashboard-section" id="overview-section">
@@ -44,7 +44,7 @@
         <div id="overview-metrics"></div>
       </div>
     </div>
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 
 </html>
