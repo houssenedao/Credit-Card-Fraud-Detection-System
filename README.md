@@ -66,16 +66,23 @@ Web Dashboard Navigation
 
 
 ## 🤖 Machine Learning Models
-logreg - Logistic Regression
-svm - Support Vector Machine
-knn - K-Nearest Neighbors
-rf - Random Forest
-dt - Decision Tree
-gb - Gradient Boosting
-xgb - XGBoost
-adaboost - AdaBoost
-brf - Balanced Random Forest
-easy_ensemble - Easy Ensemble
+
+This repository contains implementations and utilities for various popular machine learning models typically used for classification tasks.
+
+
+| Short Name      | Model Name              | Description                                                                 |
+|-----------------|-------------------------|-----------------------------------------------------------------------------|
+| `logreg`        | Logistic Regression     | A simple linear model for binary or multi-class classification.              |
+| `svm`           | Support Vector Machine  | Constructs hyperplanes for optimal class separation.                        |
+| `knn`           | K-Nearest Neighbors     | Classifies samples based on the labels of nearest neighbors in the dataset. |
+| `rf`            | Random Forest           | Ensemble of decision trees to improve accuracy and reduce overfitting.      |
+| `dt`            | Decision Tree           | Tree-structured classifier that splits the data for decision making.        |
+| `gb`            | Gradient Boosting       | Sequentially builds trees to minimize errors and improve predictions.       |
+| `xgb`           | XGBoost                 | Scalable and optimized implementation of gradient boosting.                 |
+| `adaboost`      | AdaBoost                | Boosting technique combining weak classifiers to create a strong classifier.|
+| `brf`           | Balanced Random Forest  | Random Forest adapted for imbalanced datasets by balancing classes.         |
+| `easy_ensemble` | Easy Ensemble           | Ensemble method using balanced subsets to handle imbalanced classification. |
+
 
 
 ## 🎯 Performance Metrics
