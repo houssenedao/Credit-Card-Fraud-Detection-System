@@ -5,9 +5,9 @@
     <title>Credit Card Fraud Detection Dashboard</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
+      href="{{ url_for('static', filename='css/style.css') }}"
     />
-    <link rel="icon" href="{{ url_for('static', filename='1.ico') }}" />
+    <link rel="icon" href="{{ url_for('static', filename='images/1.ico') }}" />
     <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   </head>
@@ -92,6 +92,6 @@
         <div id="feature-importance" class="plot-container"></div>
       </div>
     </div>
-    <script src="{{ url_for('static', filename='visualizations.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/visualizations.js') }}"></script>
   </body>
 </html>
