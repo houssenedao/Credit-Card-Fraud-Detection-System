@@ -1,3 +1,30 @@
+function toggleSidebar() {
+  document.querySelector(".sidebar").classList.toggle("open");
+}
+
+// Close sidebar when clicking outside
+document.addEventListener("click", function (event) {
+  const sidebar = document.querySelector(".sidebar");
+  const menuToggle = document.querySelector(".menu-toggle");
+
+  if (
+    sidebar &&
+    menuToggle &&
+    !sidebar.contains(event.target) &&
+    !menuToggle.contains(event.target)
+  ) {
+    sidebar.classList.remove("open");
+  }
+});
+
+// Handle window resize
+window.addEventListener("resize", function () {
+  const sidebar = document.querySelector(".sidebar");
+  if (sidebar && window.innerWidth >= 1200) {
+    sidebar.classList.remove("open");
+  }
+});
+
 document.getElementById("predict-form").onsubmit = async function (e) {
   e.preventDefault();
   const features = document
@@ -14,10 +41,9 @@ document.getElementById("predict-form").onsubmit = async function (e) {
   document.getElementById("result").innerHTML = `<b>Prediction:</b> ${
     data.prediction === 1 ? "Fraudulent" : "Legitimate"
   }<br>
-                 <b>Probability:</b> ${data.probability.toFixed(6)}<br>
+                 <b>Probability:</b> ${data.probability.toFixed(4)}<br>
          <b>Accuracy:</b> ${(data.accuracy * 100).toFixed(2)}%`;
 };
-
 
 // Helper functions for sample data
 function loadSampleFraud() {
