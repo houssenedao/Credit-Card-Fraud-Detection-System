@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mathematical Analysis</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link rel="icon" href="{{ url_for('static', filename='images/1.ico') }}" />
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <title>Mathematical Analysis</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <link rel="icon" href="{{ url_for('static', filename='images/1.ico') }}">
-  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-</head>
-
-<body>
-  <nav class="sidebar">
-    <h2>Fraud Detection</h2>
-    <a href="index.html">Dashboard</a>
-    <a href="visualizations.html">Visualizations</a>
-    <a href="analysis.html" class="active">Analysis</a>
-    <a href="model.html">ML Model</a>
-    <a href="amount-trends.html">Amount Trends</a>
-    <a href="feature.html">Feature</a>
-    <a href="theory.html">Theory</a>
-  </nav>
-  <div class="main-content">
-    <h1>Mathematical Analysis Table</h1>
-    <div class="math-section">
-      <h2>Analysis</h2>
-      <div id="analysis-summary">
-        <p style="color: #1976d2">Waiting for data from Dashboard...</p>
+  <body>
+    <button class="menu-toggle" onclick="toggleSidebar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="sidebar">
+      <h2>Fraud Detection</h2>
+      <a href="index.html">Dashboard</a>
+      <a href="visualizations.html">Visualizations</a>
+      <a href="analysis.html" class="active">Analysis</a>
+      <a href="model.html">ML Model</a>
+      <a href="amount-trends.html">Amount Trends</a>
+      <a href="feature.html">Feature</a>
+      <a href="theory.html">Theory</a>
+    </nav>
+    <div class="main-content">
+      <h1>Mathematical Analysis Table</h1>
+      <div class="math-section">
+        <h2>Analysis</h2>
+        <div id="analysis-summary">
+          <p style="color: #1976d2">Waiting for data from Dashboard...</p>
+        </div>
+      </div>
+      <div class="math-section">
+        <h2>Feature Statistics</h2>
+        <div id="math-table-container"></div>
+      </div>
+      <div class="math-section">
+        <h2>Mathematical Analysis</h2>
+        <div id="feature-table"></div>
       </div>
     </div>
-        <div class="math-section">
-      <h2>Feature Statistics</h2>
-      <div id="math-table-container">
-      </div>
-    </div>
-    <div class="math-section">
-      <h2> Mathematical Analysis</h2>
-      <div id="feature-table"></div>
-    </div>
+
     <script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
-</body>
+  </body>
 </html>
