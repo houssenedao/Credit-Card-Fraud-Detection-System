@@ -1,78 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Credit Card Fraud Prediction</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="icon"
-      href="{{ url_for('static', filename='images/1.ico') }}"
-      type="image/x-icon"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-    />
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Model - Fraud Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/1.ico') }}">
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+</head>
+<body>
     <nav class="sidebar">
-      <h2>Fraud Detection</h2>
-      <a href="index.html">Dashboard</a>
-      <a href="visualizations.html">Visualizations</a>
-      <a href="analysis.html">Analysis</a>
-      <a href="model.html" class="active">ML Model</a>
-      <a href="amount-trends.html">Amount Trends</a>
-      <a href="feature.html">Feature</a>
-      <a href="theory.html">Theory</a>
+        <h2>Fraud Detection</h2>
+        <a href="index.html">Dashboard</a>
+        <a href="visualizations.html">Visualizations</a>
+        <a href="analysis.html">Analysis</a>
+        <a href="model.html" class="active">ML Model</a>
+        <a href="amount-trends.html">Amount Trends</a>
+        <a href="feature.html">Feature</a>
+        <a href="theory.html">Theory</a>
     </nav>
+
     <div class="main-content">
-      <h1>Fraud Prediction</h1>
-      <div class="glass-container">
-        <form id="predict-form">
-          <label
-            >Feature values (comma separated):<br />
-            <input
-              type="text"
-              id="features"
-              size="50"
-              placeholder="1,1.2,3.4,..."
-              required
-            />
-          </label>
-          <br /><br />
-          <label>
-            Select Model:<br />
-            <select
-              id="model-select"
-              style="
-                padding: 0.5em;
-                border-radius: 8px;
-                border: 1px solid #b2ebf2;
-                margin-top: 0.5em;
-              "
-            >
-              <option value="logreg">Logistic Regression</option>
-              <option value="svm">SVM</option>
-              <option value="knn">KNN</option>
-              <option value="rf">Random Forest</option>
-              <option value="dt">Decision Tree</option>
-              <option value="adaboost">AdaBoost</option>
-              <option value="xgb">XGBoost</option>
-              <option value="gb">Gradient Boosting</option>
-              <option value="brf">Balanced Random Forest</option>
-              <option value="easy_ensemble">Easy Ensemble</option>
-            </select>
-          </label>
-          <br /><br />
-          <button type="submit">Predict</button>
-        </form>
-        <div id="result"></div>
-      </div>
+        <h1>Machine Learning Models</h1>
+        
+        <!-- Single Model Prediction -->
+        <div class="dashboard-section">
+            <h2>Single Model Prediction</h2>
+            <form id="predict-form">
+                <div class="form-group">
+                    <label for="model-select">Select Model:</label>
+                    <select id="model-select">
+                        <option value="logreg" selected>Logistic Regression</option>
+                        <option value="svm">Support Vector Machine</option>
+                        <option value="knn">K-Nearest Neighbors</option>
+                        <option value="rf">Random Forest</option>
+                        <option value="dt">Decision Tree</option>
+                        <option value="gb">Gradient Boosting</option>
+                        <option value="xgb">XGBoost</option>
+                        <option value="adaboost">AdaBoost</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="features">Transaction Features (30 comma-separated values):</label>
+                    <textarea id="features" rows="4" placeholder="1425,-1.2,0.8,1.5,-0.3,2.1,0.7,-0.9,1.1,0.4,-1.8,0.6,2.3,-0.5,1.7,0.2,-1.1,0.9,1.4,-0.7,0.3,1.8,-0.4,2.0,0.1,-1.5,0.8,1.2,-0.6,100.50" required></textarea>
+                    <small>Enter 30 feature values separated by commas (Time, V1-V28, Amount)</small>
+                </div>
+                
+                <button type="submit" class="btn-primary">Predict Fraud</button>
+            </form>
+            
+            <div id="result" class="result-container"></div>
+        </div>
+
+        <!-- Ensemble Model Prediction -->
+        <div class="dashboard-section">
+            <h2>Ensemble Model Prediction</h2>
+            <div class="ensemble-container">
+                <div class="model-selection">
+                    <div class="form-group">
+                        <label for="model1">Primary Model:</label>
+                        <select id="model1">
+                            <option value="rf" selected>Random Forest</option>
+                            <option value="xgb">XGBoost</option>
+                            <option value="gb">Gradient Boosting</option>
+                            <option value="logreg">Logistic Regression</option>
+                            <option value="svm">Support Vector Machine</option>
+                            <option value="knn">K-Nearest Neighbors</option>
+                            <option value="dt">Decision Tree</option>
+                            <option value="adaboost">AdaBoost</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="model2">Secondary Model:</label>
+                        <select id="model2">
+                            <option value="xgb" selected>XGBoost</option>
+                            <option value="rf">Random Forest</option>
+                            <option value="gb">Gradient Boosting</option>
+                            <option value="logreg">Logistic Regression</option>
+                            <option value="svm">Support Vector Machine</option>
+                            <option value="knn">K-Nearest Neighbors</option>
+                            <option value="dt">Decision Tree</option>
+                            <option value="adaboost">AdaBoost</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="ensemble-buttons">
+                    <button onclick="predictEnsemble()" class="btn-primary">Ensemble Prediction</button>
+                    <button onclick="predictWeighted()" class="btn-secondary">Weighted Prediction</button>
+                    <button onclick="predictSequential()" class="btn-accent">Sequential Prediction</button>
+                </div>
+                
+                <div id="ensemble-result" class="result-container"></div>
+            </div>
+        </div>
+
+        <!-- Feature Input Helper -->
+        <div class="dashboard-section">
+            <h2>Feature Input Helper</h2>
+            <div class="feature-helper">
+                <p><strong>Sample Transaction Features:</strong></p>
+                <div class="sample-features">
+                    <button onclick="loadSampleFraud()" class="btn-warning">Load Fraud Sample</button>
+                    <button onclick="loadSampleLegit()" class="btn-success">Load Legitimate Sample</button>
+                    <button onclick="clearFeatures()" class="btn-secondary">Clear</button>
+                </div>
+                <div class="feature-info">
+                    <h4>Feature Description:</h4>
+                    <ul>
+                        <li><strong>Time:</strong> Seconds elapsed since first transaction</li>
+                        <li><strong>V1-V28:</strong> Principal component features (anonymized)</li>
+                        <li><strong>Amount:</strong> Transaction amount</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
+
     <script src="{{ url_for('static', filename='js/model.js') }}"></script>
-  </body>
+
+</body>
 </html>
