@@ -61,7 +61,7 @@
               required
             ></textarea>
             <small
-              >Enter 30 feature values separated by commas (Time, V1-V28,
+              >Enter 30 feature values separated by commas (id, V1-V28,
               Amount)</small
             >
           </div>
@@ -142,13 +142,13 @@
             <h4>Feature Description:</h4>
             <ul>
               <li>
-                <strong>Time:</strong> Seconds elapsed since first transaction
+                <strong>id:</strong> Unique identifier for each transaction
               </li>
               <li>
-                <strong>V1-V28:</strong> Principal component features
-                (anonymized)
+                <strong>V1-V28:</strong> Anonymized features representing various transaction attributes (e.g., time, location, etc.)
               </li>
-              <li><strong>Amount:</strong> Transaction amount</li>
+              <li><strong>Amount:</strong> The transaction amount</li>
+              <li><strong>Class:</strong> Binary label indicating whether the transaction is fraudulent (1) or not (0)</li>
             </ul>
           </div>
         </div>

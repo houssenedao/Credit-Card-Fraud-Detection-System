@@ -193,7 +193,7 @@ function renderDashboard(data) {
   const columns = Object.keys(data[0]);
   const amountCol = columns.find((c) => c.toLowerCase() === "amount");
   const classCol = columns.find((c) => c.toLowerCase() === "class");
-  const timeCol = columns.find((c) => c.toLowerCase() === "time");
+  const idCol = columns.find((c) => c.toLowerCase() === "id");
   const featureCols = columns.filter((c) => /^v\d+$/i.test(c));
 
   // 1. Class Distribution
@@ -256,14 +256,14 @@ function renderDashboard(data) {
   );
 
   // 3. Time-Based Trends
-  let timeBuckets = {};
+  let idBuckets = {};
   data.forEach((row) => {
-    let bucket = Math.floor(row[timeCol] / 3600);
-    if (!timeBuckets[bucket]) timeBuckets[bucket] = { fraud: 0, nonfraud: 0 };
-    if (row[classCol] == 1) timeBuckets[bucket].fraud++;
-    else timeBuckets[bucket].nonfraud++;
+    let bucket = Math.floor(row[idCol] / 3600);
+    if (!idBuckets[bucket]) idBuckets[bucket] = { fraud: 0, nonfraud: 0 };
+    if (row[classCol] == 1) idBuckets[bucket].fraud++;
+    else idBuckets[bucket].nonfraud++;
   });
-  const buckets = Object.keys(timeBuckets)
+  const buckets = Object.keys(idBuckets)
     .map(Number)
     .sort((a, b) => a - b);
   Plotly.newPlot(
@@ -271,7 +271,7 @@ function renderDashboard(data) {
     [
       {
         x: buckets,
-        y: buckets.map((b) => timeBuckets[b].nonfraud),
+        y: buckets.map((b) => idBuckets[b].nonfraud),
         type: "scatter",
         mode: "lines",
         name: "Non-Fraudulent",
@@ -279,7 +279,7 @@ function renderDashboard(data) {
       },
       {
         x: buckets,
-        y: buckets.map((b) => timeBuckets[b].fraud),
+        y: buckets.map((b) => idBuckets[b].fraud),
         type: "scatter",
         mode: "lines",
         name: "Fraudulent",

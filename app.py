@@ -32,7 +32,7 @@ with open('ml model/adaboost_model.pkl', 'rb') as f:  # Add this line
 
 
 # Load your dataset
-df = pd.read_csv('dataset/test-2.csv')
+df = pd.read_csv('dataset/test-4.csv')
 X = df.drop('Class', axis=1)
 y = df['Class']
 
@@ -88,7 +88,7 @@ def predict():
     model_name = data.get('model', 'logreg')
     
     # Convert to DataFrame with proper column names
-    feature_names = ['Time'] + [f'V{i}' for i in range(1, 29)] + ['Amount']
+    feature_names = ['id'] + [f'V{i}' for i in range(1, 29)] + ['Amount']
     features_df = pd.DataFrame(features, columns=feature_names)
     
     # Get model
@@ -208,7 +208,7 @@ def predict_ensemble():
     model2_name = data.get('model2', 'xgb')
     
     # Convert to DataFrame with proper column names
-    feature_names = ['Time'] + [f'V{i}' for i in range(1, 29)] + ['Amount']
+    feature_names = ['id'] + [f'V{i}' for i in range(1, 29)] + ['Amount']
     features_df = pd.DataFrame(features, columns=feature_names)
     
     # Get models
@@ -250,7 +250,7 @@ def predict_ensemble():
 
 def prepare_features(features_array):
     """Convert numpy array to DataFrame with proper feature names"""
-    feature_names = ['Time'] + [f'V{i}' for i in range(1, 29)] + ['Amount']
+    feature_names = ['id'] + [f'V{i}' for i in range(1, 29)] + ['Amount']
     return pd.DataFrame(features_array, columns=feature_names)
 
 if __name__ == '__main__':

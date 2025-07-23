@@ -42,7 +42,7 @@ function renderAmountTrends(data) {
   const columns = Object.keys(data[0]);
   const amountCol = columns.find((c) => c.toLowerCase() === "amount");
   const classCol = columns.find((c) => c.toLowerCase() === "class");
-  const timeCol = columns.find((c) => c.toLowerCase() === "time");
+  const idCol = columns.find((c) => c.toLowerCase() === "id");
 
   // Amount Distribution
   const amounts = data.map((row) => row[amountCol]);
@@ -76,14 +76,14 @@ function renderAmountTrends(data) {
   );
 
   // Average Amount Over Time
-  let timeBuckets = {};
+  let idBuckets = {};
   data.forEach((row) => {
-    let bucket = Math.floor(row[timeCol] / 3600);
-    if (!timeBuckets[bucket]) timeBuckets[bucket] = { sum: 0, count: 0 };
-    timeBuckets[bucket].sum += row[amountCol];
-    timeBuckets[bucket].count += 1;
+    let bucket = Math.floor(row[idCol] / 3600);
+    if (!idBuckets[bucket]) idBuckets[bucket] = { sum: 0, count: 0 };
+    idBuckets[bucket].sum += row[amountCol];
+    idBuckets[bucket].count += 1;
   });
-  const buckets = Object.keys(timeBuckets)
+  const buckets = Object.keys(idBuckets)
     .map(Number)
     .sort((a, b) => a - b);
   Plotly.newPlot(
@@ -91,7 +91,7 @@ function renderAmountTrends(data) {
     [
       {
         x: buckets,
-        y: buckets.map((b) => timeBuckets[b].sum / timeBuckets[b].count),
+        y: buckets.map((b) => idBuckets[b].sum / idBuckets[b].count),
         type: "scatter",
         mode: "lines+markers",
         name: "Average Amount",
