@@ -6,7 +6,6 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, AdaBoostClassifier
 from sklearn.tree import DecisionTreeClassifier
 import xgboost as xgb
-from imblearn.ensemble import BalancedRandomForestClassifier, EasyEnsembleClassifier
 
 # Load your dataset
 df = pd.read_csv('dataset/creditcard_2023.csv')
@@ -20,10 +19,10 @@ y = df['Class']
 #     pickle.dump(logreg_model, f)
 
 # SVM
-svm_model = SVC(probability=True)
-svm_model.fit(X, y)
-with open('ml model/svm_model.pkl', 'wb') as f:
-    pickle.dump(svm_model, f)
+# svm_model = SVC(probability=True)
+# svm_model.fit(X, y)
+# with open('ml model/svm_model.pkl', 'wb') as f:
+#     pickle.dump(svm_model, f)
 
 # KNN
 # knn_model = KNeighborsClassifier(n_neighbors=5)
