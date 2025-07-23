@@ -79,7 +79,7 @@ function renderMathTable(data) {
   const columns = Object.keys(data[0]);
   const classCol = columns.find((c) => c.toLowerCase() === "class");
   const featureCols = columns.filter(
-    (c) => /^v\d+$/i.test(c) || ["amount", "time"].includes(c.toLowerCase())
+    (c) => /^v\d+$/i.test(c) || ["amount", "id"].includes(c.toLowerCase())
   );
 
   // Prepare class array for correlation
@@ -158,7 +158,7 @@ function mathematicalAnalysis(data) {
   const keys = Object.keys(data[0]).filter(
     (k) =>
       k !== "Class" &&
-      k.toLowerCase() !== "time" &&
+      k.toLowerCase() !== "id" &&
       data.some((row) => typeof row[k] === "number")
   );
 
