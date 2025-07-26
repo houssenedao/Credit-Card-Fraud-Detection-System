@@ -998,3 +998,105 @@ button[type="submit"]:hover {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* PWA Specific Styles */
+.pwa-install-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #1976d2, #0d47a1);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.pwa-install-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(25, 118, 210, 0.4);
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3); }
+    50% { box-shadow: 0 4px 20px rgba(25, 118, 210, 0.6); }
+    100% { box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3); }
+}
+
+.update-prompt {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    padding: 20px;
+    text-align: center;
+}
+
+.update-content {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.pwa-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    z-index: 1500;
+    animation: slideIn 0.3s ease;
+}
+
+.pwa-notification.success {
+    background: #4caf50;
+}
+
+.pwa-notification.warning {
+    background: #ff9800;
+}
+
+.pwa-notification.info {
+    background: #2196f3;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* iOS specific styles */
+@media (max-width: 768px) {
+    .pwa-install-button {
+        bottom: 80px; /* Account for iOS safe area */
+    }
+}
+
+/* Standalone app styles */
+@media (display-mode: standalone) {
+    .pwa-install-button {
+        display: none;
+    }
+    
+    body {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}

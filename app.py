@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_from_directory
 import numpy as np
 import pickle
 import pandas as pd
@@ -247,6 +247,21 @@ def predict_ensemble():
         'model2': {'prediction': int(pred2), 'probability': float(prob2), 'accuracy': float(acc2)},
         'ensemble_accuracy': float(avg_acc)
     })
+
+# Add route for service worker
+@app.route('/sw.js')
+def service_worker():
+    return send_from_directory('static', 'sw.js', mimetype='application/javascript')
+
+# Add route for manifest
+@app.route('/manifest.json')
+def manifest():
+    return send_from_directory('static', 'manifest.json', mimetype='application/json')
+
+# Add route for offline page
+@app.route('/offline.html')
+def offline():
+    return render_template('offline.html')
 
 def prepare_features(features_array):
     """Convert numpy array to DataFrame with proper feature names"""
