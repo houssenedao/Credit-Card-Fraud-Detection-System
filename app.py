@@ -32,7 +32,7 @@ with open('ml model/adaboost_model.pkl', 'rb') as f:  # Add this line
 
 
 # Load your dataset
-df = pd.read_csv('dataset/test-4.csv')
+df = pd.read_csv('dataset/test-2.csv')
 X = df.drop('Class', axis=1)
 y = df['Class']
 
