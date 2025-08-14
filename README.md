@@ -68,7 +68,7 @@ An intelligent machine learning system for detecting fraudulent credit card tran
 ## 📁 Project Structure
 
 ```
-Intelligent-Fraud-Prevention-in-Credit-Card-Transactions/
+Credit-Card-Fraud-Detection-System/
 ├── 📄 app.py                          # Main Flask application
 ├── 📄 save_model.py                   # Model training and saving
 ├── 📄 requirements.txt                # Python dependencies
@@ -126,8 +126,8 @@ Intelligent-Fraud-Prevention-in-Credit-Card-Transactions/
 
 1. **Clone the repository**:
 ```bash
-git clone https://github.com/shakiliitju/Intelligent-Fraud-Prevention-in-Credit-Card-Transactions.git
-cd Intelligent-Fraud-Prevention-in-Credit-Card-Transactions
+git clone https://github.com/shakiliitju/Credit-Card-Fraud-Detection-System.git
+cd Credit-Card-Fraud-Detection-System
 ```
 
 2. **Create virtual environment** (recommended):
@@ -235,21 +235,28 @@ Content-Type: application/json
 
 ## 🤖 Machine Learning Models
 
-| Model | Code | Algorithm | Use Case |
-|-------|------|-----------|----------|
-| **Logistic Regression** | `logreg` | Linear classification | Baseline model |
-| **Support Vector Machine** | `svm` | Kernel-based | High-dimensional data |
-| **K-Nearest Neighbors** | `knn` | Distance-based | Local patterns |
-| **Random Forest** | `rf` | Ensemble trees | Feature importance |
-| **Decision Tree** | `dt` | Tree-based | Interpretable rules |
-| **Gradient Boosting** | `gb` | Boosting ensemble | Sequential learning |
-| **XGBoost** | `xgb` | Optimized boosting | High performance |
-| **AdaBoost** | `adaboost` | Adaptive boosting | Weak learner combination |
+This repository contains implementations and utilities for various popular machine learning models typically used for classification tasks.
+
+
+| Short Name      | Model Name              | Description                                                                 |
+|-----------------|-------------------------|-----------------------------------------------------------------------------|
+| `logreg`        | Logistic Regression     | A simple linear model for binary or multi-class classification.             |
+| `svm`           | Support Vector Machine  | Constructs hyperplanes for optimal class separation.                        |
+| `knn`           | K-Nearest Neighbors     | Classifies samples based on the labels of nearest neighbors in the dataset. |
+| `rf`            | Random Forest           | Ensemble of decision trees to improve accuracy and reduce overfitting.      |
+| `dt`            | Decision Tree           | Tree-structured classifier that splits the data for decision making.        |
+| `gb`            | Gradient Boosting       | Sequentially builds trees to minimize errors and improve predictions.       |
+| `xgb`           | XGBoost                 | Scalable and optimized implementation of gradient boosting.                 |
+| `adaboost`      | AdaBoost                | Boosting technique combining weak classifiers to create a strong classifier.|
+| `brf`           | Balanced Random Forest  | Random Forest adapted for imbalanced datasets by balancing classes.         |
+| `easy_ensemble` | Easy Ensemble           | Ensemble method using balanced subsets to handle imbalanced classification. |
+
+
 
 ### Ensemble Methods
 
-1. **Ensemble**: Combines predictions from multiple models
-2. **Weighted Average**: Uses model accuracy as weights
+1. **Ensemble Prediction**: Combines predictions from multiple models
+2. **Weighted Prediction**: Uses model accuracy as weights
 3. **Sequential Prediction**: Cascade with confidence threshold
 
 ## 📊 Performance Metrics
@@ -495,69 +502,15 @@ python -m pytest
 <p><em>Transaction amount patterns and trend analysis</em></p>
 </div>
 
-### 📱 PWA Installation
-<div align="center">
-<table>
-<tr>
-<td align="center">
-<img src="screenshots/pwa-install-prompt.png" alt="PWA Install Prompt" width="300">
-<p><em>PWA Installation Prompt</em></p>
-</td>
-<td align="center">
-<img src="screenshots/pwa-offline.png" alt="PWA Offline Mode" width="300">
-<p><em>Offline Mode Support</em></p>
-</td>
-</tr>
-</table>
-</div>
-
-### 🎨 UI/UX Features
-<div align="center">
-<table>
-<tr>
-<td align="center">
-<img src="screenshots/glassmorphism-design.png" alt="Glassmorphism Design" width="400">
-<p><em>Beautiful Glassmorphism UI Design</em></p>
-</td>
-<td align="center">
-<img src="screenshots/responsive-sidebar.png" alt="Responsive Sidebar" width="400">
-<p><em>Responsive Navigation Sidebar</em></p>
-</td>
-</tr>
-</table>
-</div>
 
 ### 🚀 Live Demo
 <div align="center">
-<img src="screenshots/live-demo.gif" alt="Live Demo" width="800">
+<img src="screenshots/live-demo.mp4" alt="Live Demo" width="800">
 <p><em>Live demonstration of fraud detection system in action</em></p>
 </div>
 
 ---
 
-## 📁 Screenshots Directory Structure
-
-To add the screenshots to your repository, create this directory structure:
-
-```
-Intelligent-Fraud-Prevention-in-Credit-Card-Transactions/
-├── 📁 screenshots/                   # Directory for screenshots
-│   ├── 📄 dashboard.png               # Dashboard overview screenshot
-│   ├── 📄 model-interface.png         # ML model interface screenshot
-│   ├── 📄 visualizations.png          # Data visualizations screenshot
-│   ├── 📄 analysis.png                # Statistical analysis screenshot
-│   ├── 📄 mobile-dashboard.png        # Mobile dashboard screenshot
-│   ├── 📄 mobile-model.png            # Mobile model interface screenshot
-│   ├── 📄 mobile-charts.png           # Mobile visualizations screenshot
-│   ├── 📄 prediction-results.png      # Prediction results screenshot
-│   ├── 📄 theory-page.png            # Theory page screenshot
-│   ├── 📄 feature-analysis.png        # Feature analysis screenshot
-│   ├── 📄 amount-trends.png          # Amount trends analysis screenshot
-│   ├── 📄 pwa-install-prompt.png     # PWA install prompt screenshot
-│   ├── 📄 pwa-offline.png            # PWA offline mode screenshot
-│   ├── 📄 glassmorphism-design.png   # Glassmorphism design screenshot
-│   └── 📄 responsive-sidebar.png      # Responsive sidebar screenshot
-```
 
 ## 📜 License
 
