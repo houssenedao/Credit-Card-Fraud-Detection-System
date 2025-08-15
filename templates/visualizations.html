@@ -152,27 +152,5 @@
     </footer>
     <script src="{{ url_for('static', filename='js/visualizations.js') }}"></script>
     <script src="{{ url_for('static', filename='js/pwa.js') }}"></script>
-    <script>
-        // Enhanced prediction with offline support
-        function enhancedPredict(endpoint, data) {
-            if (!navigator.onLine) {
-                offlineQueue.addToQueue({ endpoint, data });
-                pwaManager.showNotification('Prediction queued for when online', 'info');
-                return Promise.resolve({ queued: true });
-            }
-            
-            return fetch(endpoint, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .catch(error => {
-                pwaManager.showNotification('Prediction failed. Queued for retry.', 'warning');
-                offlineQueue.addToQueue({ endpoint, data });
-                throw error;
-            });
-        }
-    </script>
   </body>
 </html>
