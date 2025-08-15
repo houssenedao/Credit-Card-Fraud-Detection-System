@@ -263,6 +263,14 @@ def manifest():
 def offline():
     return render_template('offline.html')
 
+@app.route('/privacy-policy.html')
+def privacy_policy():
+    return render_template('privacy-policy.html')
+
+@app.route('/terms-conditions.html')
+def terms_conditions():
+    return render_template('terms-conditions.html')
+
 def prepare_features(features_array):
     """Convert numpy array to DataFrame with proper feature names"""
     feature_names = ['id'] + [f'V{i}' for i in range(1, 29)] + ['Amount']
