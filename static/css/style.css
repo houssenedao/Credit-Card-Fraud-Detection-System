@@ -411,10 +411,8 @@ button[type="submit"]:hover {
 .footer-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 6rem;
 }
 
 .footer-section h3 {
@@ -1098,5 +1096,87 @@ button[type="submit"]:hover {
     body {
         padding-top: env(safe-area-inset-top);
         padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+/* Terms & Conditions and Privacy Policy page styles */
+.legal-container {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    padding: 2.5em 2em;
+    max-width: 800px;
+    margin: 2rem auto;
+    color: #0d47a1;
+    text-align: left;
+    font-size: 1.08em;
+}
+
+.legal-container h1 {
+    color: #1976d2;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.legal-container h2 {
+    color: #1976d2;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.legal-container ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.legal-container li {
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+}
+
+.legal-container a {
+    color: #1976d2;
+    text-decoration: underline;
+    word-break: break-all;
+}
+
+.legal-container p {
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+}
+
+.legal-container hr {
+    margin: 2rem 0;
+    border: none;
+    border-top: 1px solid #b3e5fc;
+}
+
+@media (max-width: 900px) {
+    .legal-container {
+        padding: 1.5em 1em;
+        width: 98%;
+    }
+    .legal-container h1 {
+        font-size: 1.5rem;
+    }
+    .legal-container h2 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .legal-container {
+        padding: 1em 0.5em;
+        font-size: 0.98em;
+    }
+    .legal-container h1 {
+        font-size: 1.15rem;
     }
 }
