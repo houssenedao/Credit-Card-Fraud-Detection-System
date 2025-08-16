@@ -493,15 +493,24 @@ python -m pytest
 ### 🔍 Feature Analysis
 <div align="center">
 <img src="screenshots/feature-analysis.png" alt="Feature Analysis" width="800">
-<p><em>Detailed feature importance and correlation analysis</em></p>
+<p><em>Top Contributing Features for Fraudulent Transactions</em></p>
+</div>
+
+<div align="center">
+<img src="screenshots/feature-analysis-2.png" alt="Feature Analysis" width="800">
+<p><em>Correlation Heatmap of Features</em></p>
 </div>
 
 ### 💰 Amount Trends Analysis
 <div align="center">
 <img src="screenshots/amount-trends.png" alt="Amount Trends" width="800">
-<p><em>Transaction amount patterns and trend analysis</em></p>
+<p><em>Transaction Amount Distribution</em></p>
 </div>
 
+<div align="center">
+<img src="screenshots/amount-trends-2.png" alt="Amount Trends" width="800">
+<p><em>Average Transaction Amount Over Time</em></p>
+</div>
 
 ### 🚀 Live Demo
 <div align="center">
